@@ -9,7 +9,7 @@ load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY")
 # Initialize the Gemini API client
 
-genai.cofigure(api_key=api_key)
+genai.configure(api_key=api_key)
 
 # crear variable para el modelo
 model = genai.GenerativeModel(model_name="gemini-1.5-pro", generation_config=genai.GenerationConfig(

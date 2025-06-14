@@ -8,7 +8,7 @@ router = APIRouter()
 @router.post("/recomendaciones-inmediatas")
 def generar_recomendaciones(data: EvaluacionCompleta):
     prompt = PROMPT_PLANTILLA_RECOMENDACIONES.format(
-        perfil=data.perfil_cliente.perfil,
+        perfil=data.perfil_cliente.caracteristicaParticular,
         contexto=data.respuestas
     )
     respuesta = ask_gemini(prompt)

@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from models.schemas import PerfilCliente
-from services.gemini import askgemini
+from services.gemini import ask_gemini
 from utils.prompt_templates import PROMPT_GUIA_ACTITUD
 
 
@@ -13,12 +13,13 @@ async def generar_guia_actitud(perfil_cliente: PerfilCliente):
     """
     prompt = PROMPT_GUIA_ACTITUD.format(
         zona=perfil_cliente.zona,
-        # Cambiar según el modelo de PerfilCliente
-        tipo_cliente=perfil_cliente.tipo_cliente,
-        necesidades=perfil_cliente.necesidades,
-        preferencias=perfil_cliente.preferencias
+        caracteristicaParticular=perfil_cliente.caracteristicaParticular,
+        edad=perfil_cliente.edad,
+        nombre=perfil_cliente.nombre,
+        sexo=perfil_cliente.sexo
     )
-    
-    respuesta = await askgemini(prompt)
-    
-    return {"respuesta": respuesta}
+    try:
+        respuesta = ask_gemini(prompt)
+        return {"respuesta": respuesta}
+    except Exception as e:
+        return {"error": str(e)}

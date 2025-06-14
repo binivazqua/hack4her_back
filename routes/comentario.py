@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from models.schemas import Comentario
+from models.schemas import Feedback
 from services.gemini import ask_gemini
 from utils.prompt_templates import PROMPT_PLANTILLA_COMENTARIO
 
@@ -7,7 +7,7 @@ from utils.prompt_templates import PROMPT_PLANTILLA_COMENTARIO
 router = APIRouter()
 
 @router.post("/generar-comentario")
-async def generar_comentario(comentario: Comentario):
+async def generar_comentario(comentario: Feedback):
     """
     Genera un comentario basado en la evaluación de un cliente.
     """
