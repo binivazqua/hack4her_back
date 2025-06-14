@@ -7,7 +7,7 @@ router = APIRouter()
 
 @router.post("/recomendaciones-inmediatas")
 def generar_recomendaciones(data: EvaluacionCompleta):
-    prompt = PROMPT_PLANTILLA_RECOMENDACIONESPLANTILLA_RECOMENDACIONES.format(
+    prompt = PROMPT_PLANTILLA_RECOMENDACIONES.format(
         perfil=data.perfil_cliente.perfil,
         contexto=data.respuestas
     )
