@@ -15,6 +15,7 @@ def generar_recomendaciones(data: dict):
             evaluacion=data["evaluacion"]
         )
         respuesta = ask_gemini(prompt)
+        print("📝 Recomendaciones generadas:\n", respuesta)
         return {"recomendaciones": respuesta}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"❌ Error al generar recomendaciones: {str(e)}")

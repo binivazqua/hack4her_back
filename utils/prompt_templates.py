@@ -30,7 +30,7 @@ Tu tarea es generar una lista de preguntas para evaluar el punto de venta desde 
 - No uses markdown ni bloques de código.
 - No expliques nada.
 - NO INCLUYAS fechas específicas o nombres propios si no fueron provistos explícitamente.
-- Genera exclusivamente 2 preguntas por rubro, así que el total será 8 preguntas.
+- Genera exclusivamente 1 pregunta por rubro, así que el total será 4 preguntas. No excedas las cinco preguntas.
 - Cada pregunta debe tener el siguiente formato:
   {{"rubro": "Nombre del rubro", "pregunta": "Texto de la pregunta"}}
 
@@ -65,12 +65,15 @@ Con base en la siguiente visita estructurada realizada por un colaborador, gener
 - No repitas textualmente las preguntas.
 - Utiliza un lenguaje profesional, directo y fácil de entender.
 - Evita juicios personales; enfócate en la mejora del punto de venta.
+- No incuyas datos explicitamente ficticios. Para la fecha de la visita utiliza la fecha actual.
 
 Finaliza el reporte con una sección clara de cierre bajo el título:
 
-**Cierre del reporte:**
+Cierre del reporte:
 
 Incluye una frase breve y profesional que indique que la auditoría ha concluido.
+
+IMPORTANTE: No utilices caracteres especiales en la respuesta como comillas, asteriscos, o guiones bajos. NO ESTÁS FORMATEADO EN MARCADOS O CÓDIGO.
 """
 
 
@@ -99,6 +102,8 @@ Eres un asesor técnico que debe generar recomendaciones inmediatas para mejorar
 ✅ Cada recomendación debe estar escrita en tono positivo y constructivo.
 ✅ Enuméralas con viñetas.
 ✅ Evita repetir la información del reporte literalmente, sintetiza las oportunidades y convierte los hallazgos en acciones concretas.
+
+IMPORTANTE: No utilices caracteres especiales en la respuesta como comillas, asteriscos, o guiones bajos. NO ESTÁS FORMATEADO EN MARCADOS O CÓDIGO.
 
 Formato de salida:
 
