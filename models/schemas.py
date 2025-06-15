@@ -29,6 +29,8 @@ class PuntoDeVenta(BaseModel):
 
 class PerfilCliente(BaseModel):
     tipo_negocio: str
+    edad: Optional[int] = None
+    sexo: Optional[str] = None
     zona: str
     antiguedad_cliente: str
     nombre_dueno: str
@@ -95,3 +97,7 @@ class EvaluacionCompleta(BaseModel):
     respuestas: list[RespuestaEntrevista]
     colaborador: str
 
+
+class ComentarioInput(BaseModel):
+    comentario: str
+    clasificacion: str  # e.g., "bien atendido", "riesgo bajo", etc.

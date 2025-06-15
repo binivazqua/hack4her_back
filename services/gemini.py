@@ -39,4 +39,5 @@ def ask_gemini(prompt:str) -> str:
     """
     Funcion base para interactuar con gemini """
     response = model.generate_content(prompt)
+    print("🧠 Prompt generado:\n", prompt)
     return response.text.strip() if response.text else "Gemini no pudo generar una respuesta."

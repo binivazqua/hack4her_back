@@ -22,7 +22,7 @@ async def guardar_evaluacion(evaluacion: EvaluacionCompleta, punto_id: str = Que
     """
     try:
         evaluacion_dict = {
-            "cliente": evaluacion.cliente.dict(),
+            
             "respuestas": [r.dict() for r in evaluacion.respuestas],
             "colaborador": evaluacion.colaborador
         }

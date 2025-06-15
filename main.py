@@ -1,6 +1,6 @@
 
 from fastapi import FastAPI
-from routes import recomendaciones, evaluacion, actitud, comentario, entrevista
+from routes import recomendaciones, evaluacion, actitud, comentario, entrevista, confirmacion
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
@@ -26,6 +26,7 @@ app.include_router(evaluacion.router, tags=["Evaluaciones"])
 app.include_router(actitud.router, tags=["Actitudes"])
 app.include_router(comentario.router, tags=["Comentarios"])
 app.include_router(entrevista.router, tags=["Entrevistas"])
+app.include_router(confirmacion.router, tags=["Confirmación"])
 
 
 

@@ -13,9 +13,9 @@ async def generar_guia_actitud(perfil_cliente: PerfilCliente):
     """
     prompt = PROMPT_GUIA_ACTITUD.format(
         zona=perfil_cliente.zona,
-        caracteristicaParticular=perfil_cliente.caracteristicaParticular,
+        antiguedad=perfil_cliente.antiguedad_cliente,
         edad=perfil_cliente.edad,
-        nombre=perfil_cliente.nombre,
+        nombre=perfil_cliente.nombre_dueno,
         sexo=perfil_cliente.sexo
     )
     try:
