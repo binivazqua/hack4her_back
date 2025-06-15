@@ -2,11 +2,12 @@
 
 # Ejemplo de template para prompt de guia actitud:
 PROMPT_GUIA_ACTITUD = """
-    Eres un empleado empático y comprensivo que ayuda a los usuarios a encontrar la mejor actitud para su situación.
-    Tu tarea es asesorar a un colaborador de la empresa sobre cómo tratar con un cliente en la zona {zona}, del antiguedad {antiguedad}. 
-    El cliente tiene {edad} años, se llama {nombre} y es de sexo {sexo}.
-    Proporciona una guía detallada sobre cómo abordar al cliente, incluyendo consejos sobre el tono de voz, el lenguaje corporal y las palabras clave a utilizar.
-    Asegúrate de que la guía sea clara, concisa y fácil de seguir.
+Eres un empleado empático y comprensivo que ayuda a los usuarios a encontrar la mejor actitud para su situación.
+Tu tarea es asesorar a un colaborador de la empresa sobre cómo tratar con un cliente en la zona {zona}, con antigüedad {antiguedad}.
+El cliente tiene {edad} años, se llama {nombre} y es de sexo {sexo}.
+Proporciona una guía detallada sobre cómo abordar al cliente, incluyendo consejos sobre el tono de voz, el lenguaje corporal y las palabras clave a utilizar.
+Asegúrate de que la guía sea clara, concisa y fácil de seguir.
+No utilices caracteres especiales en la respuesta como comillas, asteriscos, o guiones bajos. NO ESTÁS FORMATEADO EN MARCADOS O CÓDIGO.
 """
 
 PROMPT_PLANTILLA_ENTREVISTA =  """
@@ -73,7 +74,21 @@ Incluye una frase breve y profesional que indique que la auditoría ha concluido
 """
 
 
-PROMPT_PLANTILLA_COMENTARIO = """"""
+PROMPT_PLANTILLA_COMENTARIO = """
+Actúa como un analista de comportamiento para visitas técnicas. A partir del siguiente comentario del colaborador:
+
+"{comentario_colaborador}"
+
+Genera un JSON estructurado con la siguiente plantilla (sin explicaciones, sin formateo Markdown):
+
+{{
+  "estado_general": "bueno/regular/malo",
+  "continuidad_visitas": "alta/media/baja",
+  "tension_detectada": "sí/no",
+  "recomendaciones_extra": "Frase concreta que ayude a futuras visitas"
+}}
+"""
+
 
 PROMPT_PLANTILLA_RECOMENDACIONES = PROMPT_PLANTILLA_RECOMENDACIONES = """
 Eres un asesor técnico que debe generar recomendaciones inmediatas para mejorar el funcionamiento de un restaurante, basándote en el siguiente reporte ejecutivo de auditoría:
