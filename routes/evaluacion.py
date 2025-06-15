@@ -5,6 +5,7 @@ from services.gemini import ask_gemini
 from utils.prompt_templates import PROMPT_PLANTILLA_EVALUACION
 import json
 from firebase_config import db
+from fastapi import Query
 
 
 router = APIRouter()
@@ -13,27 +14,34 @@ print("🔄 Módulo de evaluación cargado correctamente.")
 
 # Endpoint para guardar la evaluación generada en Firestore
 @router.post("/guardar-evaluacion")
-async def guardar_evaluacion(evaluacion: EvaluacionCompleta):
+async def guardar_evaluacion(evaluacion: EvaluacionCompleta, punto_id: str = Query(..., description="ID del punto de venta"),
+    visita_id: str = Query(..., description="ID de la visita")):
     """
-    Guarda la evaluación generada en Firestore.
+    Guarda la evaluación generada dentro de una visita existente en Firestore,
+    bajo la ruta /puntosDeVenta/{punto_id}/visitas/{visita_id}.
     """
     try:
-        fecha = datetime.datetime.now().isoformat()
-        doc_data = {
+        evaluacion_dict = {
             "cliente": evaluacion.cliente.dict(),
             "respuestas": [r.dict() for r in evaluacion.respuestas],
-            "colaborador": evaluacion.colaborador,
-            "fecha": fecha
+            "colaborador": evaluacion.colaborador
         }
 
-        cliente_id = f"{evaluacion.cliente.nombre_dueno.lower().replace(' ', '_')}_{evaluacion.cliente.zona.lower().replace(' ', '_')}"
-        db.collection("evaluaciones").document(cliente_id).collection("entrevistas").document(fecha).set(doc_data)
+        ref = db.collection("puntosDeVenta").document(punto_id).collection("visitas").document(visita_id)
 
-        return {"mensaje": "✅ Evaluación guardada con éxito."}
+        if ref.get().exists:
+            ref.update({"evaluacionGenerada": evaluacion_dict})
+        else:
+            ref.set({"evaluacionGenerada": evaluacion_dict})
+
+        return {"mensaje": "✅ Evaluación guardada correctamente en la visita."}
 
     except Exception as e:
-        print(f"❌ Error al guardar en Firestore: {e}")
-        raise HTTPException(status_code=500, detail="Error al guardar la evaluación.")
+        print(f"❌ Error al guardar evaluación en visita: {e}")
+        raise HTTPException(status_code=500, detail="Error al guardar la evaluación en la visita.")
+
+
+
 
 
 
