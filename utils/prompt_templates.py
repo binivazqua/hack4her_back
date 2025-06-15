@@ -45,7 +45,27 @@ Tu tarea es generar una lista de preguntas para evaluar el punto de venta desde 
 ]
 """
 
-PROMPT_PLANTILLA_EVALUACION = """"""
+PROMPT_PLANTILLA_EVALUACION = PROMPT_PLANTILLA_EVALUACION = """
+Eres un auditor profesional especializado en puntos de venta del sector de productos de consumo masivo.
+
+Con base en la siguiente visita estructurada realizada por un colaborador, genera un **reporte ejecutivo claro y profesional** que incluya:
+
+1. Observaciones clave organizadas por rubro.
+2. Áreas de oportunidad detectadas.
+3. Recomendaciones personalizadas para el punto de venta evaluado.
+
+🧾 Perfil del cliente:
+{perfil}
+
+📝 Respuestas obtenidas durante la entrevista:
+{respuestas}
+
+✍️ Escribe el reporte de forma clara y concisa, SIN AÑADIR FORMATO DE CÓDIGO O MARCADOS.
+- No repitas textualmente las preguntas.
+- Utiliza un lenguaje profesional, directo y fácil de entender.
+- Evita juicios personales; enfócate en la mejora del punto de venta.
+"""
+
 
 PROMPT_PLANTILLA_COMENTARIO = """"""
 

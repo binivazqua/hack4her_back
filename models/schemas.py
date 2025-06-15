@@ -69,8 +69,8 @@ class PerfilActitud(BaseModel):
 # ---------------------------
 
 class Pregunta(BaseModel):
-    rubro: str
-    pregunta: str
+    id_pregunta: str
+    respuesta: str
 
 
 class GenerarEntrevistaRequest(BaseModel):
@@ -86,11 +86,12 @@ class GenerarEntrevistaResponse(BaseModel):
 # ---------------------------
 
 class RespuestaEntrevista(BaseModel):
-    pregunta: str
+    id_pregunta: str
     respuesta: str
 
 
 class EvaluacionCompleta(BaseModel):
     cliente: PerfilCliente
     respuestas: list[RespuestaEntrevista]
+    colaborador: str
 

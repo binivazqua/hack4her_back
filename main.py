@@ -28,7 +28,10 @@ app.include_router(comentario.router, tags=["Comentarios"])
 app.include_router(entrevista.router, tags=["Entrevistas"])
 
 
+
 @app.get("/")
 def get_root():
     return {"message": "La API mas OP para la Super App de RulfoBytes esta en funcionamiento."}
 
+# En main.py
+print(app.routes)
