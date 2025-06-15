@@ -12,10 +12,12 @@ async def generar_evaluacion_completa(data: EvaluacionCompleta):
     """
     prompt = PROMPT_PLANTILLA_EVALUACION.format(
         perfil=data.perfil_cliente.perfil,
-        respuestas=data.respuestas
+        respuestas=", ".join(
+            f"{respuesta.id_pregunta}: {respuesta.respuesta}" for respuesta in data.respuestas
+        )
     )
     
-    respuesta = await ask_gemini(prompt)
+    respuesta = ask_gemini(prompt)
     
     return {"evaluacion": respuesta}
 
