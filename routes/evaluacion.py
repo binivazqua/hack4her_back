@@ -51,6 +51,10 @@ async def generar_evaluacion_completa(data: EvaluacionCompleta):
     
     try:
         respuesta = ask_gemini(prompt)
+        if not respuesta.strip().endswith(".") or respuesta.strip().endswith(":") or respuesta.strip().endswith("*"):
+            print("⚠️ Evaluación truncada detectada, añadiendo cierre automático...")
+            respuesta += "\n\n**Cierre del reporte:** Esta auditoría ha concluido. Se recomienda implementar las acciones sugeridas para mejorar el punto de venta."
+
         return {"evaluacion": respuesta}
     except Exception as e:
         print(f"❌ Error al obtener respuesta de Gemini: {e}")

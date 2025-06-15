@@ -45,7 +45,7 @@ Tu tarea es generar una lista de preguntas para evaluar el punto de venta desde 
 ]
 """
 
-PROMPT_PLANTILLA_EVALUACION = PROMPT_PLANTILLA_EVALUACION = """
+PROMPT_PLANTILLA_EVALUACION = """
 Eres un auditor profesional especializado en puntos de venta del sector de productos de consumo masivo.
 
 Con base en la siguiente visita estructurada realizada por un colaborador, genera un **reporte ejecutivo claro y profesional** que incluya:
@@ -64,10 +64,34 @@ Con base en la siguiente visita estructurada realizada por un colaborador, gener
 - No repitas textualmente las preguntas.
 - Utiliza un lenguaje profesional, directo y fácil de entender.
 - Evita juicios personales; enfócate en la mejora del punto de venta.
+
+Finaliza el reporte con una sección clara de cierre bajo el título:
+
+**Cierre del reporte:**
+
+Incluye una frase breve y profesional que indique que la auditoría ha concluido.
 """
 
 
 PROMPT_PLANTILLA_COMENTARIO = """"""
 
-PROMPT_PLANTILLA_RECOMENDACIONES = """"""
+PROMPT_PLANTILLA_RECOMENDACIONES = PROMPT_PLANTILLA_RECOMENDACIONES = """
+Eres un asesor técnico que debe generar recomendaciones inmediatas para mejorar el funcionamiento de un restaurante, basándote en el siguiente reporte ejecutivo de auditoría:
+
+"{evaluacion}"
+
+✅ Genera entre 3 y 5 recomendaciones accionables, claras y breves.
+✅ Cada recomendación debe estar escrita en tono positivo y constructivo.
+✅ Enuméralas con viñetas.
+✅ Evita repetir la información del reporte literalmente, sintetiza las oportunidades y convierte los hallazgos en acciones concretas.
+
+Formato de salida:
+
+[
+  "Recomendación 1",
+  "Recomendación 2",
+  ...
+]
+"""
+
 
